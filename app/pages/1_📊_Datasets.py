@@ -41,7 +41,7 @@ def create_dataset():
                         asset_path=asset_path,
                         version=dataset_version
                     )
-                    system.artifact_registry.save(dataset)
+                    system.registry.register.save(dataset)
                     st.success("Dataset created successfully!")
                 except Exception as e:
                     st.error(f"Error creating dataset: {str(e)}")
@@ -52,7 +52,7 @@ def create_dataset():
 def list_datasets():
     st.header("Existing Datasets")
     system = AutoMLSystem.get_instance()
-    datasets = system.artifact_registry.list(type="dataset")
+    datasets = system.registry.list(type="dataset")
     
     if datasets:
         for dataset in datasets:
